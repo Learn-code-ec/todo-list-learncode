@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="form">
+    <div class="form-container">
+        <h2>{% block title %}Sign up{% endblock %}</h2>
+        {% include 'partials/_messages.html' %}
+        <form method="POST">
+            <div>
+                <label for="username">User name</label>
+                <input type="text" id="username" name="username"
+                    value="{{ (form.get('username') if form is defined else '')|e }}" placeholder="Ej. John">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="off">
+            </div>
+            <button type="submit">Sign up</button>
+        </form>
+
+        <div class="nav-form">
+            <p>Do you have an account?</p>
+            <a href="{{ url_for('auth.login') }}">Log in</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

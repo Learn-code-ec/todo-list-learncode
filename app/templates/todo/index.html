@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="banner">
+    <div class="container">
+        <h2>{% block title %}My To-Do App{% endblock %}</h2>
+        <p>A simple app to manage your daily tasks. Add, edit, and complete to-dos to stay focused and productive every
+            day.</p>
+        {% if g.user %}
+        <a href="{{ url_for('todo.list') }}">Todos</a>
+        {% else %}
+        <a href="{{ url_for('auth.register') }}">To Start</a>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

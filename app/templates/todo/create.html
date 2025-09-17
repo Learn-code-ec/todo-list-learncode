@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="form">
+    <div class="form-container">
+        <h2>{% block title %}Create Todo{% endblock %}</h2>
+        {% include 'partials/_messages.html' %}
+        <form method="POST">
+            <div>
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title"
+                    value="{{ (form.get('title') if form is defined else '')|e }}" placeholder="Ej. Do homework">
+            </div>
+            <div>
+                <label for="description">Description</label>
+                <textarea name="description" id="description" rows="4" placeholder="Type Description"></textarea>
+            </div>
+
+            <button type="submit">Create</button>
+        </form>
+
+        <div class="nav-form">
+            <p>Cancel and go back?</p>
+            <a href="{{ url_for('todo.list') }}">Todos</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
